@@ -22,6 +22,7 @@ $(async function() {
       });
     
       questions = result.data.results;
+      console.log(questions);
     
       newQuestion();
       $('.body').on("click", ".question-button", answer);
@@ -59,7 +60,7 @@ const newQuestion = async function() {
           });
           questions = questions.concat(result.data.results);
     }
-    $("#question-text").text(questions[0].question);
+    $("#question-text").html(questions[0].question);
       let c = Math.floor((Math.random() * 4));
       let answers = [];
       let a = 0;
@@ -72,10 +73,10 @@ const newQuestion = async function() {
           }
       }
       //need to decode
-      $("#a1").text(answers[0]);
-      $("#a2").text(answers[1]);
-      $("#a3").text(answers[2]);
-      $("#a4").text(answers[3]);
+      $("#a1").html(answers[0]);
+      $("#a2").html(answers[1]);
+      $("#a3").html(answers[2]);
+      $("#a4").html(answers[3]);
 }
 
 
