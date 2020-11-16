@@ -11,5 +11,8 @@ To run the development server locally just type:
 npm run start
 ```
 
+## Live URL
+[Quizzical](https://comp426-quizapp.web.app/)
+
 ## License
 [ISC](https://choosealicense.com/licenses/isc/)
