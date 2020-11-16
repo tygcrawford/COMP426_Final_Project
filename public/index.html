@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <link rel="stylesheet" href="styles/main.css">    
+
+    <title>Quizzical | Login</title>
+</head>
+<body>
+    <div class="hero is-fullheight">
+        <nav class="navbar">
+            <div class="navbar-item" id="title">
+                Quizzical
+            </div>
+        </nav>
+        <div class="hero-body">
+            <div class="container">
+                <div class="column is-6 is-offset-3">
+                    <div class="box">
+                        <nav class="tabs is-fullwidth">
+                            <div class="container">
+                                <ul>
+                                <li class="is-active" id="login-tab">
+                                    <a>Log In</a>
+                                </li>
+                                <li id="signup-tab">
+                                    <a>Sign Up</a>
+                                </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <form id="login-form">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" placeholder="Email" type="email" name="login-email" id="login-email">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" placeholder="Password" type="password" name="login-password" id="login-password">
+                                </div>
+                            </div>
+                            <button class="button">Log In</button>
+                        </form>
+                        <form class="is-hidden" id="signup-form">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" placeholder="Username" type="text" name="signup-username" id="signup-username">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" placeholder="Email" type="email" name="signup-email" id="signup-email">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">          
+                                    <input class="input" placeholder="Password" type="password" name="signup-password" id="signup-password">
+                                </div>
+                            </div>
+                            <button class="button">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+    <script src="scripts/firebaseInit.js"></script>
+    
+    <script src="scripts/auth/auth.js"></script>
+
+    <script src="scripts/loginTabs.js"></script>
+</body>
+</html>

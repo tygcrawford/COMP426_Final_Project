@@ -1,17 +1,14 @@
 {
-  "name": "donation_tracker",
+  "name": "comp426-quizapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "A quiz app with a leaderboard built for the UNC COMP 426 Final Project.",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
+  "scripts": {
+    "start": "browser-sync start -ws public/"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.13"
-  },
-  "dependencies": {
-    "axios": "^0.21.0",
-    "jquery": "^3.5.1"
   }
 }

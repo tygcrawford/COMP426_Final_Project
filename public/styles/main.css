@@ -1,0 +1,59 @@
+#title {
+    font-family: "Lobster";
+}
+
+/* #navbar {
+    padding: 10px 20px;
+    color: #FFF;   
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navbar > #title {
+    font-family: "Lobster";
+    font-size: 30px;
+}
+
+#navbar > a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#form-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-container > form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+#form-container > form:first-child {
+    margin-right: var(--form-padding);
+    padding-right: var(--form-padding);
+    border-right:  1px solid #dbdbdb;
+    border-bottom: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #form-container {
+        flex-direction: column;
+    }    
+
+    #form-container > form:first-child {
+        margin-right: 0;
+        padding-right: 0;
+        margin-bottom: var(--form-padding);
+        padding-bottom: var(--form-padding);
+        border-right: none;
+        border-bottom: 1px solid #dbdbdb;
+    }
+} */
