@@ -4,7 +4,6 @@ let token;
 
 
 $(async function() {
-
     const tokenResult = await axios({
         method: 'get',
         url: 'https://opentdb.com/api_token.php?command=request',
