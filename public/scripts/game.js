@@ -32,19 +32,18 @@ $(async function() {
 
 const answer = function(b){
     if(b.target.innerText == questions[0].correct_answer){
-        $("#result").text("Correct Answer");
+        $("#result").text("Correct Answer").addClass("is-success");
         answeredCorrectly();
     } else {
-        $("#result").text("Incorrect Answer");
+        $("#result").text("Incorrect Answer").addClass("is-danger");
         answeredIncorrectly();
     }
-    $("#result").css("color", "black");
+    $("#result").removeClass("is-hidden");
 
     questions.splice(0, 1);
     newQuestion();
     setTimeout(function(){ 
-        $("#result").text(".");
-        $("#result").css("color", "white");
+        $("#result").addClass("is-hidden").removeClass("is-success").removeClass("is-danger")
     }, 2000);
 };
 
