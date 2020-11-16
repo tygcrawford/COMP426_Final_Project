@@ -12,5 +12,15 @@ async function searchUsernames(string) {
     })
 }
 
-searchUsernames("wow")
-// main()
+async function getCurrentUserScore() {
+    let uid = auth.currentUser.uid;
+    let res = await db.collection("users").doc(uid).get();
+    let data = res.data();
+    document.getElementById("score").innerText = `username: ${data.username}
+    correct: ${data.correct}
+    incorrect: ${data.incorrect}`;
+}
+
+auth.onAuthStateChanged((user) => {
+  getCurrentUserScore()  
+})
