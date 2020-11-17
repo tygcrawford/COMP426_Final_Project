@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
@@ -48,9 +50,25 @@
             <div class="container">
                 <div class="column is-8 is-offset-2">
                     <div class="box">
+                        <div class="title">Search for Players</div>
+                        <div class="field">
+                            <input type="text" id="search-box" class="input is-fullwidth">
+                        </div>
+                        <div class="table-container is-hidden" id="userinfo-table-container">
+                            <table class="table is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Correct</th>
+                                        <th>Incorrect</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userinfo-table"></tbody>
+                            </table>
+                        </div>
                         <div class="title">Leaderboard</div>
                         <div class="table-container">
-                            <table class="table is-fullwidth">
+                            <table class="table is-hoverable is-striped">
                                 <thead>
                                     <tr>
                                         <th>Rank</th>
@@ -59,12 +77,23 @@
                                         <th>Incorrect</th>
                                     </tr>
                                 </thead>
-                                <tbody id="table"></tbody>
+                                <tbody id="leaderboard-table"></tbody>
                             </table>
                         </div>
                         <!-- Personal score. Style. -->
                         <div class="title">Your Score</div>
-                        <div id="score"></div>
+                        <div class="table-container">
+                            <table class="table is-hoverable">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Correct</th>
+                                        <th>Incorrect</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="currentuser-table"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,6 +107,11 @@
     
     <script src="../scripts/auth/authRedirect.js"></script>
     <script src="../scripts/auth/logout.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" 
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" 
+        crossorigin="anonymous"></script>
 
     <script src="../scripts/navbar.js"></script>
     <script src="../scripts/leaderboard.js"></script>
