@@ -35,7 +35,8 @@ signup_form.addEventListener("submit", async (e) => {
             const user_data = {
                 username: username,
                 correct: 0,
-                incorrect: 0
+                incorrect: 0,
+                rating: 1000
             }
             await db.collection("users").doc(creds.user.uid).set(user_data);
             window.location.href = "pages/quiz.html"

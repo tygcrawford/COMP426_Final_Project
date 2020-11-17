@@ -1,6 +1,11 @@
 let questions = [];
 let token;
 
+const questionRating = {
+    easy: 800,
+    medium: 1200,
+    hard: 1600
+}
 
 
 $(async function() {
@@ -33,10 +38,10 @@ $(async function() {
 const answer = function(b){
     if(b.target.innerText == questions[0].correct_answer){
         $("#result").text("Correct Answer").addClass("is-success");
-        answeredCorrectly();
+        answeredCorrectly(questions[0].difficulty);
     } else {
         $("#result").text("Incorrect Answer").addClass("is-danger");
-        answeredIncorrectly();
+        answeredIncorrectly(questions[0].difficulty);
     }
     $("#result").removeClass("is-hidden");
 
@@ -80,22 +85,22 @@ const newQuestion = async function() {
 }
 
 
-const answeredIncorrectly = async function () {
+const answeredIncorrectly = async function (difficulty) {
     const uid = auth.currentUser.uid;
     const userRef = db.collection("users").doc(uid)
     let doc = await userRef.get()
     let userData = doc.data()
-    let incorrect = userData.incorrect
-    incorrect++
-    const res = await userRef.update({incorrect: incorrect});
+    let incorrect = userData.incorrect + 1
+    let rating = EloRating.calculate(userData.rating, questionRating[difficulty], false).playerRating;
+    const res = await userRef.update({incorrect: incorrect, rating: rating});
 };
 
-const answeredCorrectly = async function () {
+const answeredCorrectly = async function (difficulty) {
     const uid = auth.currentUser.uid;
     const userRef = db.collection("users").doc(uid)
     let doc = await userRef.get()
     let userData = doc.data()
-    let correct = userData.correct
-    correct++
-    const res = await userRef.update({correct: correct});
+    let correct = userData.correct + 1
+    let rating = EloRating.calculate(userData.rating, questionRating[difficulty], true).playerRating;
+    const res = await userRef.update({correct: correct, rating: rating});
 };

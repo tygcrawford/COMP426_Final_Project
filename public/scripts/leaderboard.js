@@ -1,14 +1,16 @@
-async function main() {
-    let top = await db.collection("users").orderBy("correct", "desc").limit(10).get();
+async function drawLeaderboard() {
+    let top = await db.collection("users").orderBy("rating", "asc").limit(10).get();
     const table = document.querySelector("#leaderboard-table");
     let i = 0;
     top.forEach(function (e) {
-        let data = e.data()
+        let user = e.data()
         let rowTemplate = `<tr>
-            <td><strong>${i+1}</strong></td>
-            <td>${data.username}</td>
-            <td>${data.correct}</td>
-            <td>${data.incorrect}</td>
+            <td>${i+1}</td>
+            <td>${user.username}</td>
+            <td>${user.correct}</td>
+            <td>${user.incorrect}</td>
+            <td>${user.correct + user.incorrect}</td>
+            <td>${user.rating}</td>
         </tr>`;
         table.innerHTML += rowTemplate;
         i++;
@@ -33,6 +35,8 @@ async function displayCurrentUserScore() {
             <td>${user.username}</td>
             <td>${user.correct}</td>
             <td>${user.incorrect}</td>
+            <td>${user.correct + user.incorrect}</td>
+            <td>${user.rating}</td>
         </tr>`;
     document.getElementById("currentuser-table").innerHTML = rowTemplate;
 }
@@ -47,8 +51,8 @@ auth.onAuthStateChanged((user) => {
   displayCurrentUserScore();
 })
 
-main();
 
+drawLeaderboard();
 
 $(async () => {
     $("#search-box").on("change", async (e) => {
@@ -60,6 +64,8 @@ $(async () => {
                     <td>${user.username}</td>
                     <td>${user.correct}</td>
                     <td>${user.incorrect}</td>
+                    <td>${user.correct + user.incorrect}</td>
+                    <td>${user.rating}</td>
                 </tr>`;
             $("#userinfo-table").html(rowTemplate);
         }
