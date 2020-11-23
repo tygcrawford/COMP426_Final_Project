@@ -5,3 +5,7 @@
 #error-notif {
     margin-top: 1em;
 }
+
+.disabled{
+    pointer-events: none;
+  }

@@ -1,5 +1,5 @@
 async function drawLeaderboard() {
-    let top = await db.collection("users").orderBy("rating", "asc").limit(10).get();
+    let top = await db.collection("users").orderBy("rating", "desc").limit(10).get();
     const table = document.querySelector("#leaderboard-table");
     let i = 0;
     top.forEach(function (e) {

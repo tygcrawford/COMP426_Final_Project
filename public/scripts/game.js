@@ -43,12 +43,28 @@ const answer = function(b){
         $("#result").text("Incorrect Answer").addClass("is-danger");
         answeredIncorrectly(questions[0].difficulty);
     }
+    for(let i = 1; i < 5; i++){
+        if($("#a" + i).text() == questions[0].correct_answer){
+            $("#a" + i).addClass("is-success");
+        } else if ($("#a" + i).text() == b.target.innerText) {
+            $("#a" + i).addClass("is-danger");
+
+        }
+    }
     $("#result").removeClass("is-hidden");
+    $("#a1").addClass('disabled');
+    $("#a2").addClass('disabled');
+    $("#a3").addClass('disabled');
+    $("#a4").addClass('disabled');
 
     questions.splice(0, 1);
-    newQuestion();
     setTimeout(function(){ 
-        $("#result").addClass("is-hidden").removeClass("is-success").removeClass("is-danger")
+        $("#result").addClass("is-hidden").removeClass("is-success").removeClass("is-danger");
+        newQuestion();
+        $("#a1").removeClass('disabled').removeClass("is-success").removeClass("is-danger");
+        $("#a2").removeClass('disabled').removeClass("is-success").removeClass("is-danger");
+        $("#a3").removeClass('disabled').removeClass("is-success").removeClass("is-danger");
+        $("#a4").removeClass('disabled').removeClass("is-success").removeClass("is-danger");
     }, 2000);
 };
 
@@ -66,6 +82,7 @@ const newQuestion = async function() {
           questions = questions.concat(result.data.results);
     }
     $("#question-text").html(questions[0].question);
+    $("#question-difficulty").text("Difficulty: " + questions[0].difficulty);
       let c = Math.floor((Math.random() * 4));
       let answers = [];
       let a = 0;
@@ -77,7 +94,6 @@ const newQuestion = async function() {
               a++;
           }
       }
-      //need to decode
       $("#a1").html(answers[0]);
       $("#a2").html(answers[1]);
       $("#a3").html(answers[2]);
