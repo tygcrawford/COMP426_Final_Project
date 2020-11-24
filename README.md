@@ -50,7 +50,7 @@ This request returns an array of question objects as its data. The fields we use
 This project uses firebase to manage backend resources. We are using the hosting, authentication, and firebase storage features.
 
 ### Setup
-To begin using Firebase you must create a project through the online [Firebase Fonsole](https://console.firebase.google.com/). The next step is to install the Firebase CLI tools with:
+To begin using Firebase you must create a project through the online [Firebase Console](https://console.firebase.google.com/). The next step is to install the Firebase CLI tools with:
 ```bash
 npm install -g firebase-tools
 ```
@@ -61,7 +61,7 @@ firebase login
 
 Once logged in you can run the following command to connect the project on your computer to the one you made on the Firebase Console.
 ```bash
-firbase init
+firebase init
 ```
 
 To setup Firebase on your web app you need a few lines of code. The first to construct an object like so:
@@ -156,7 +156,7 @@ await db.collection( collection_label ).doc( document_key ).delete();
 Where first two variables are the same as in the preceding examples. This will delete the object and all of the fields contained within it.
 
 ## Rating System
-The rating value stored for this project is derived from the ELO rating system, as used by the chess community. All accounts are initialized with a rating of 1000 and they "compete" against the questions they answer. The questions are rated by their respective difficulty. Questions labeled "easy" have a rating of 800, "medium" have a rating of 1200, and "hard" have a rating of 1600. This was implemented for ease and accuracy of user rating and ensures that if someone is given more easy or hard questions they will not boost/diminish their leaderboard rank by a larger ammount than is warranted.
+The rating value stored for this project is derived from the ELO rating system, as used by the chess community. All accounts are initialized with a rating of 1000 and they "compete" against the questions they answer. The questions are rated by their respective difficulty. Questions labeled "easy" have a rating of 800, "medium" have a rating of 1200, and "hard" have a rating of 1600. This was implemented for ease and accuracy of user rating and ensures that if someone is given more easy or hard questions they will not boost/diminish their leaderboard rank by a larger amount than is warranted.
 
 ## License
 [ISC](https://choosealicense.com/licenses/isc/)
