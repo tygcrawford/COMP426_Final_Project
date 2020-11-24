@@ -18,14 +18,14 @@ npm run start
 The API we chose for this project is [Open Trivia DB](https://opentdb.com/). This API fetches random trivia questions with three incorrect answers and one correct answer, so that you can construct a multiple choice question.
 
 ### Usage
-The first call you must make to use this API is to fetch a token for use as a parameter of the remainder of your calls. This can be done as follows.
+The first call you must make to use this API is to fetch a token for use as a parameter of the remainder of your calls. This can be done as follows:
 ```javascript
 const token = await axios({
     method: 'get',
     url: 'https://opentdb.com/api_token.php?command=request',
 });
 ```
-The other request we made to this API was to fetch N random questions from the server; in our case we were requesting a batch size of 10 questions. We did this as follows.
+The other request we made to this API was to fetch N random questions from the server; in our case we were requesting a batch size of 10 questions. This can be done as follows:
 ```javascript
 const questions = await axios({
     method: 'get',
