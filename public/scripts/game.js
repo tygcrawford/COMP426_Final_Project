@@ -26,7 +26,6 @@ $(async function() {
       });
     
       questions = result.data.results;
-      console.log(questions);
     
       newQuestion();
       $('.buttons').on("click", ".question-button", answer);
