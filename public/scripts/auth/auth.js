@@ -56,9 +56,7 @@ login_form.addEventListener("submit", (e) => {
     const email = login_form["login-email"].value;
     const password = login_form["login-password"].value;
 
-    auth.signInWithEmailAndPassword(email, password).then((cred) => {
-        // console.log("logged in")
-    }).catch((e) => {
+    auth.signInWithEmailAndPassword(email, password).catch((e) => {
         errorMessage("Email or password incorrect.");
     });
 });

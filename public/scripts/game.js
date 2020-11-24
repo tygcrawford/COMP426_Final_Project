@@ -8,6 +8,11 @@ const questionRating = {
 }
 
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
+
 $(async function() {
     const tokenResult = await axios({
         method: 'get',
@@ -81,7 +86,7 @@ const newQuestion = async function() {
           questions = questions.concat(result.data.results);
     }
     $("#question-text").html(questions[0].question);
-    $("#question-difficulty").text("Difficulty: " + questions[0].difficulty);
+    $("#question-difficulty").text("Difficulty: " + capitalizeFirstLetter(questions[0].difficulty));
       let c = Math.floor((Math.random() * 4));
       let answers = [];
       let a = 0;
