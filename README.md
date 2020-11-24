@@ -80,7 +80,7 @@ This example object was made with filler values as the real object is individual
 
 With this config object you can initialize Firebase to work for your web app and prepare the services you need.
 ```javascript
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp( firebaseConfig );
 
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -104,9 +104,11 @@ The Firebase Authentication services can be accessed using the "auth" variable d
 
 We used three Firebase Authentication functions to construct our login and signup process.
 ```javascript
-auth.createUserWithEmailAndPassword( email, password )
-auth.signInWithEmailAndPassword( email, password )
-auth.onAuthStateChanged( callbackFunction )
+auth.createUserWithEmailAndPassword( email, password );
+
+auth.signInWithEmailAndPassword( email, password );
+
+auth.onAuthStateChanged( callbackFunction );
 ```
 The first of these creates a user and takes in the email and password they provide. It will throw an error if the email is already in use or if the password is less than six characters. If it is successful, it will log the new user in, return an object representing the logged in user, and provide them with a cookie for re-authentication across pages.
 
@@ -119,7 +121,7 @@ The third function is an event handler that will monitor the user state. The cal
 Firestore is a document based, no-sql storage system that comes as one of the Firebase services. The largest element of this system is a collection which should contain documents representing a similar concept. These documents are stored as JSON objects, labeled with a key (that can be provided or auto-generated), and can hold many data types.
 
 We used one collection, labeled "users", to store our data for this project. This collection contains documents with a key provided by Firebase Authentication labeled "uid". The documents are structured as follows:
-```JSON
+```
 {
     correct (number): The number of questions answered correctly by the user,
     incorrect (number): The number of questions answered incorrectly by the user,
@@ -128,33 +130,33 @@ We used one collection, labeled "users", to store our data for this project. Thi
 }
 ```
 
-The Firebase Firestore services can be accessed using the "db" variable defined in the setup section. To create a new document you can call:
+The Firebase Firestore services can be accessed using the "db" variable defined in the setup section. This system clearly supports all CRUD opperations, each of which is explained below. To create a new document you can call:
 ```javascript
-await db.collection(collection_label).doc(document_key).set(JSON_object);
+await db.collection( collection_label ).doc( document_key ).set( JSON_object );
 ```
 Where "collection_label" is the name of the collection (in our case "users"), "document_key" is the key for the document you will be creating, and "JSON_object" is the object that will be stored in that document.
 
 To read a document you can call:
 ```javascript
-const result = await db.collection(collection_label).doc(document_key).get();
+const result = await db.collection( collection_label ).doc( document_key ).get();
 const data = result.data();
 ```
 Where the variables represent the same things as in the last example. The data variable will contain the JSON object stored by Firestore under the given collection and document key.
 
 To update a document you can call:
 ```javascript
-await db.collection(collection_label).doc(document_key).update(JSON_object);
+await db.collection( collection_label ).doc( document_key ).update( JSON_object );
 ```
 Where first two variables are the same as in the preceding examples. The JSON_object must only contain the key value pairs for the fields you are trying to update the values of.
 
 To delete a document you can call:
 ```javascript
-await db.collection(collection_label).doc(document_key).delete();
+await db.collection( collection_label ).doc( document_key ).delete();
 ```
 Where first two variables are the same as in the preceding examples. This will delete the object and all of the fields contained within it.
 
 ## Rating System
-The rating value stored for this project is derived from the ELO rating system, as used by the chess community. All accounts are initialized with a rating of 1000 and they "compete" against the questions they answer. The questions are rated by their respective difficulty. Questions labeled "easy" have a rating of 800, "medium" have a rating of 1200, and "hard" have a rating of 1600. This was implemented for ease and accuracy of user rating an ensures that if someone is given more easy or hard questions they will not boost/diminish their leaderboard rank by a larger ammount than is warranted.
+The rating value stored for this project is derived from the ELO rating system, as used by the chess community. All accounts are initialized with a rating of 1000 and they "compete" against the questions they answer. The questions are rated by their respective difficulty. Questions labeled "easy" have a rating of 800, "medium" have a rating of 1200, and "hard" have a rating of 1600. This was implemented for ease and accuracy of user rating and ensures that if someone is given more easy or hard questions they will not boost/diminish their leaderboard rank by a larger ammount than is warranted.
 
 ## License
 [ISC](https://choosealicense.com/licenses/isc/)
